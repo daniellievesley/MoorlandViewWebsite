@@ -206,3 +206,16 @@ a:visited{
   margin: 0;
 }
 
+.twoflex{
+    display: flex;
+    align-items: flex-top;
+    padding: 1% 1%;
+    font-family: Inter;
+    justify-content: space-between;
+    background-color:rgb(168, 216, 218);
+    color:#2E0152;
+}
+
+.twoflex h1{
+    font-family: Montserrat;
+}
