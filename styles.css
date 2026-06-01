@@ -82,9 +82,7 @@ button{
 }
 
 .fourtiles {
-    padding-top: 1%;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding: 1%;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 24px;
@@ -105,3 +103,44 @@ button{
   box-shadow: 0 12px 24px rgba(59, 13, 83, 0.06);
   border-color: 2% rgb(176, 227, 99);
 }
+
+.plumsct{
+    display: flex;
+    background-color: #e8deed;
+    padding: 1% 1%;
+    font-family: Manrope;
+}
+
+.activities-list{
+    list-style: none;
+    padding: 0;
+    margin: 24px 0 0 0;
+}
+
+.careersct{
+    padding: 1% 1%;
+    font-family: Manrope;
+    background-color: rgb(168, 216, 218);
+}
+
+.videosct{
+    display: flex;
+    padding: 1% 1%;
+    font-family: Manrope;
+    gap: 24px;
+    align-items: flex-start;
+    background-color: rgb(168, 216, 218);
+}
+
+.videosct > div {
+    flex: 1;
+    min-width: 0;
+}
+
+.videosct iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    display: block;
+}
+
