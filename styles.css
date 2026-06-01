@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+}
+
+main{
+    padding-left: 1%;
+    padding-right: 1%;
+}
+
+html{
+    background-color: #03C5CD;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    font-family: Montserrat;
+    background-color: #2E0152;
+}
+
+header a{
+    text-decoration: none;
+    color: #03C5CD
+}
+
+#navMenu {
+    gap: 24px;
+    display: flex;
+}
+
+#logocorner {
+    display: block;
+    width: 180px;
+    height: auto;
+}
+
+.titletext {
+    font-family: Montserrat;
+    color:#2E0152;
+    font-size: 300%;
+    margin-bottom: 0%;
+    font-weight: bold;
+}
+
+.titlesubtext{
+    font-family: Montserrat;
+    color:#2E0152;
+    font-size: 150%;
+}
+
+#cqcBadge {
+    width: 18%;
+    border-radius: 8%;
+}
+
+#mainHero{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.heroImg{
+  width: 40%;
+  height: auto;
+  display: block;
+  margin-top: 2%;
+}
+
+#textwithinHero{
+    align-self: flex-start;
+}
+
+button{
+    background-color:#2E0152;
+    color: white;
+    border-radius: 4px;
+    font-family: Inter;
+    padding: 0.3% 1%;
+    font-size: 110%;
+}
