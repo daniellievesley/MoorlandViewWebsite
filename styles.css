@@ -2,13 +2,8 @@ body {
     margin: 0;
 }
 
-main{
-    padding-left: 1%;
-    padding-right: 1%;
-}
-
 html{
-    background-color: #03C5CD;
+    background-color: white;
 }
 
 header {
@@ -60,6 +55,10 @@ header a{
     align-items: center;
     justify-content: space-between;
     gap: 30px;
+    background-color: #03C5CD;
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-bottom: 1%;
 }
 
 .heroImg{
@@ -80,4 +79,29 @@ button{
     font-family: Inter;
     padding: 0.3% 1%;
     font-size: 110%;
+}
+
+.fourtiles {
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.info-card{
+    background-color: #2E0152;
+    border: 1px solid #03C5CD;
+    border-radius: 12px;
+    padding: 3%;
+    color: #03C5CD;
+    font-family: Manrope;
+   
+}
+
+.info-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(59, 13, 83, 0.06);
+  border-color: 2% rgb(176, 227, 99);
 }
