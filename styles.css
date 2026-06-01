@@ -145,3 +145,19 @@ button{
     display: block;
 }
 
+footer {
+    background-color: #03C5CD;
+    color:#2E0152;
+    font-family: Montserrat;
+    padding: 1% 1%;
+}
+
+footer a{
+    text-decoration: none;
+    color:#2E0152;
+}
+
+a:visited{
+    text-decoration: none;
+}
+
