@@ -110,6 +110,12 @@ button{
     color: white;
     padding: 1% 1%;
     font-family: Manrope;
+    gap: 2%;
+    align-items: flex-start;
+}
+
+.plumsct > div {
+    flex: 0 0 80%;
 }
 
 .activities-list{
@@ -118,10 +124,29 @@ button{
     margin: 24px 0 0 0;
 }
 
+.activities-list li{
+    font-size: 125%;
+}
+
 .careersct{
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
     padding: 1% 1%;
     font-family: Manrope;
-    background-color: rgb(168, 216, 218);
+}
+
+.careersct > div {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.careersct .sideFlex2Img {
+    padding-right: 10%;
+    flex: 0 0 20%;
+    max-width: 40%;
+    width: 100%;
+    margin-left: auto;
 }
 
 .videosct{
@@ -159,5 +184,25 @@ footer a{
 
 a:visited{
     text-decoration: none;
+}
+
+.card-icon {
+  font-size: 200%;
+}
+
+.plumsct > div {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.sideFlex2Img {
+  padding-right: 5%;
+  flex: 0 0 20%;
+  max-width: 20%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
+  margin: 0;
 }
 
