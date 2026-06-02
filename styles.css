@@ -118,6 +118,15 @@ button{
     flex: 0 0 80%;
 }
 
+.plumsct > img {
+    flex: 0 0 20%;
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+    padding-right: 2%;
+}
+
 .activities-list{
     list-style: none;
     padding: 0;
@@ -142,7 +151,7 @@ button{
 }
 
 .careersct .sideFlex2Img {
-    padding-right: 10%;
+    padding-right: 4%;
     flex: 0 0 20%;
     max-width: 40%;
     width: 100%;
@@ -171,15 +180,15 @@ button{
 }
 
 footer {
-    background-color: #03C5CD;
-    color:#2E0152;
+    color: #03C5CD;
+    background-color:#2E0152;
     font-family: Montserrat;
     padding: 1% 1%;
 }
 
 footer a{
     text-decoration: none;
-    color:#2E0152;
+    color:#03C5CD;
 }
 
 a:visited{
@@ -196,9 +205,8 @@ a:visited{
 }
 
 .sideFlex2Img {
-  padding-right: 5%;
-  flex: 0 0 20%;
-  max-width: 20%;
+  padding-right: 0;
+  max-width: 100%;
   width: 100%;
   height: auto;
   object-fit: cover;
@@ -206,16 +214,97 @@ a:visited{
   margin: 0;
 }
 
+
 .twoflex{
     display: flex;
-    align-items: flex-top;
+    align-items: flex-start;
+    gap: 24px;
     padding: 1% 1%;
     font-family: Inter;
     justify-content: space-between;
-    background-color:rgb(168, 216, 218);
+    background-color:#03C5CD;
     color:#2E0152;
 }
 
+.twoflex > div {
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.twoflex-image {
+    flex: 0 0 28%;
+}
+
+.twoflex-image .sideFlex2Img {
+    max-width: 320px;
+    margin-left: auto;
+}
+
+
 .twoflex h1{
     font-family: Montserrat;
+}
+
+section{
+    background-color: #03C5CD;
+    color:#2E0152;
+    font-family: Manrope;
+    padding: 1% 1%;
+}
+
+.pageBanner{
+    font-family: Montserrat;
+    background: #2E0152;
+    color:#03C5CD;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+.pageBanner h1{
+    margin: 0;
+}
+
+.feedback-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 32px;
+  margin: 0; /* Reset default browser blockquote margins */
+  box-shadow: 0 4px 6px rgba(59, 13, 83, 0.02); /* Very soft plum shadow tint */
+  
+  /* Creates a distinct, stylish accent border on the left using your brand teal */
+  border-left: 4px solid #00B6C0; 
+  
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-bottom: 1%;
+}
+
+.quote-mark {
+  font-family: 'Georgia', serif;
+  font-size: 60px;
+  color: rgba(0, 182, 192, 0.15); /* Light translucent teal */
+  line-height: 1;
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
+.quote-text {
+  font-family: 'Inter', sans-serif;
+  font-style: italic; /* Italics instantly signal spoken feedback */
+  font-size: 16px;
+  line-height: 1.6;
+  color: #4A5568;
+  margin-bottom: 20px;
+  z-index: 1; /* Keeps text layered cleanly above background quote mark */
+}
+
+.quote-author {
+  font-family: 'Inter', sans-serif;
+  font-style: normal; /* Turn off italicizing for the name signature */
+  font-weight: 600;
+  font-size: 14px;
+  color: #3B0D53; /* Brand Plum */
+  margin-top: auto; /* Push the signature cleanly to the bottom of the card */
 }
