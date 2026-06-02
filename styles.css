@@ -362,3 +362,27 @@ section{
 #vidsbycarousel iframe{
     align-items: flex-end;
 }
+
+.sideflex{
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: stretch;
+    gap: 16px;
+    background-color: #2E0152;
+    padding: 1% 1%;
+}
+
+
+.sideflex > div{
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.sideflex button{
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+    background-color:#00B6C0;
+}
