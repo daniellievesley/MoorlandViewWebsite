@@ -237,7 +237,6 @@ a:visited{
 }
 
 .twoflex-image .sideFlex2Img {
-    max-width: 320px;
     margin-left: auto;
 }
 
@@ -398,6 +397,15 @@ section{
     gap: 1%;
 }
 
+body.newspage{
+    background-color: #6B4AA0;
+    min-height: 100vh;
+}
+
+body.newspage main{
+    background-color: #6B4AA0;
+}
+
 .news-card{
     background-color:#03C5CD;
     padding: 2%;
@@ -460,6 +468,169 @@ section{
     width: 20%;
 }
 
+section:has(> #abouttiles), section:has(> .purplebackground), .twoflex:has(> .purplebackground){
+    background-color: #2E0152;
+    color:#03C5CD;
+}
+
+section:has(> #abouttiles) .info-card{
+    background-color:#03C5CD;
+    color:#2E0152;
+}
+
+body.homepage{
+    background-color: #6B4AA0;
+}
 
 
 
+
+
+
+@media (max-width: 768px) {
+
+    .titletext, .titlesubtext{
+        padding-left: 1%;
+    }
+
+    section h2, section p, section li{
+        padding-left: 1%;
+    }
+
+    #cqcBadge{
+        padding-left: 1%;
+    }
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 12px 16px;
+        position: sticky;
+    }
+
+    #navMenu {
+        flex-wrap: wrap;
+        gap: 12px 16px;
+    }
+
+    #logocorner {
+        width: 140px;
+    }
+
+    #mainHero,
+    .twoflex,
+    .careersct,
+    .plumsct,
+    .videosct,
+    .sideflex {
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    .heroImg,
+    .twoflex-image,
+    .twoflex-copy,
+    #vidstack,
+    .careersct .sideFlex2Img,
+    .plumsct > img,
+    .sideFlex2Img {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    #vidstack {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    #vidstack iframe,
+    .videosct iframe,
+    .carousel {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+        box-sizing: border-box;
+    }
+
+    .carousel{
+        padding-right: 10%;
+    }
+
+
+
+    .news-grid {
+        grid-template-columns: 1fr;
+        margin: 16px 0;
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .article-container,
+    section,
+    .pageBanner,
+    .news-grid,
+    footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .social-icons-grid {
+        width: 100%;
+        gap: 16px;
+        height: auto;
+        flex-wrap: wrap;
+    }
+
+    .social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;         /* Adjust this to change button size */
+    height: 40px;        /* Adjust this to change button size */
+    overflow: hidden;
+}
+
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Keeps the SVG logo ratio perfect without distortion */
+}
+
+    .notion-content img,
+    .notion-image {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .titletext {
+        font-size: 220%;
+    }
+
+    .titlesubtext {
+        font-size: 130%;
+    }
+
+    section .btn,
+    #textwithinHero .btn,
+    .sideflex .btn {
+        display: block;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        padding: 0.65rem 1rem;
+        font-size: 100%;
+    }
+
+    .news-card,
+    .feedback-card {
+        padding: 20px;
+    }
+}

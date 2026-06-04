@@ -48,13 +48,13 @@
             <a class="btn" href="files/2025v1.0-Brochure.pdf" target="_blank"> Brochure </a>
         </div>
         <div class="twoflex-image">
-            <img class="sideFlex2Img" src="images/diningRoom.jpg" alt="Dining room at Moorland View Care Home">
+            <img id="diningroom" class="sideFlex2Img" src="images/diningRoom.jpg" alt="Dining room at Moorland View Care Home">
         </div>
     </div>
 </section>
 
     <section>
-        <div class="fourtiles">
+        <div id='abouttiles' class="fourtiles">
             <div class="info-card">
                 <div class="card-icon">🟢</div>
                 <h3> Rated "Good" by the CQC </h3>
@@ -74,7 +74,8 @@
     <h3> 🧠 Specialized Sports Therapy </h3>
     <p> Resident well-being is at the core of our philosophy. We host a visiting Sports Therapist 3x a week who engages residents in popular, therapeutic movement-to-music sessions. These specialized sessions are a firm favorite in the home, actively enhancing functional abilities, mobility, and overall happiness. </p>
     </section>
-    <section> 
+    <section class="quotessection">
+    <div class="purplebackground">
     <h2> What do people think about us? </h2> 
     <p> Don't just take our word for it. Hear from some residents and relatives on what they have to say. </p>
     <div class="feedback-grid">
@@ -98,65 +99,60 @@
       </blockquote>
 
     </div>
+    </div>
     </section>
 
     <section id="vidsbycarousel" class="twoflex">
-        <div>
-        <h2> Your new home. </h2>
-        <p> Explore our comfortable bedrooms, premium en-suite facilities and beautiful living spaces. Carefully crafted and recently renovated. </p>
-        <div class="carousel">
-            <div class="carousel-wrapper">
-                <img src="images/diningRoom.jpg">
-                <img src="images/10a.jpg">
-                <img src="images/3b.jpg">
-                <img src="images/bathroom.jpg">
-                <img src="images/chairs.jpg">
+        <div class="twoflex-copy">
+            <h2> Your new home. </h2>
+            <p> Explore our comfortable bedrooms, premium en-suite facilities and beautiful living spaces. Carefully crafted and recently renovated. </p>
+            <div class="carousel">
+                <div class="carousel-wrapper">
+                    <img src="images/diningRoom.jpg">
+                    <img src="images/10a.jpg">
+                    <img src="images/3b.jpg">
+                    <img src="images/bathroom.jpg">
+                    <img src="images/chairs.jpg">
+                </div>
             </div>
-        </div>
         </div>
         <div id="vidstack">
             <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/fGC9qcBmw34"
-    title="YouTube video player"
-    frameborder="0"
-    allowfullscreen>
-</iframe>
-<br>
-<br>
-        <iframe
-    width="560"
-    height="315"
-    src="https://www.youtube.com/embed/5esDX4VNbec"
-    title="YouTube video player"
-    frameborder="0"
-    allowfullscreen>
-</iframe>
-        </div>   
+                src="https://www.youtube.com/embed/fGC9qcBmw34"
+                title="YouTube video player"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+            <iframe
+                src="https://www.youtube.com/embed/5esDX4VNbec"
+                title="YouTube video player"
+                frameborder="0"
+                allowfullscreen>
+            </iframe>
+        </div>
     </section>
 
     <section>
         <div class="twoflex">
-        <div>
-        <h2> Our activities pledge. </h2>
-        <p> Embedded within our package of care, is our fantastic activities programme, carefully crafted to enhance resident development and social cohesion. </p>
-        <p> <b> More than a pastime, it's a purpose: </b>We believe activities are essential for a fulfilling life, helping to foster independence, create social connections, and bring a sense of purpose to each day.</p>
-        <p> <b> Your choice, your day: </b>Our calendar is shaped by you. We listen to your interests, honour your lifelong hobbies, and empower you to decide how you spend your time.</p>
-        <p> <b> Fostering Friendship & Community: </b>Our activities are designed to bring people together, creating a vibrant and friendly atmosphere where new connections and cherished memories are made.</p>
-        <p> Find out more by watching our video explainer: What are activities like at Moorland View? </p>
-        <a class="btn" target="_blank" href="files/sampleactivities.pdf"> 🗓️ Get a taste by viewing a sample week activities schedule </a>
-        </div>
-            <iframe 
-  width="560" 
-  height="315" 
-  src="https://www.youtube.com/embed/rxDY3i_w5Xo" 
-  title="YouTube video player" 
-  frameborder="0" 
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-  referrerpolicy="strict-origin-when-cross-origin" 
-  allowfullscreen>
-</iframe>
+            <div class="twoflex-copy">
+                <h2> Our activities pledge. </h2>
+                <p> Embedded within our package of care, is our fantastic activities programme, carefully crafted to enhance resident development and social cohesion. </p>
+                <p> <b> More than a pastime, it's a purpose: </b>We believe activities are essential for a fulfilling life, helping to foster independence, create social connections, and bring a sense of purpose to each day.</p>
+                <p> <b> Your choice, your day: </b>Our calendar is shaped by you. We listen to your interests, honour your lifelong hobbies, and empower you to decide how you spend your time.</p>
+                <p> <b> Fostering Friendship & Community: </b>Our activities are designed to bring people together, creating a vibrant and friendly atmosphere where new connections and cherished memories are made.</p>
+                <p> Find out more by watching our video explainer: What are activities like at Moorland View? </p>
+                <a class="btn" target="_blank" href="files/sampleactivities.pdf"> 🗓️ Get a taste by viewing a sample week activities schedule </a>
+            </div>
+            <div id="vidstack">
+                <iframe 
+                    src="https://www.youtube.com/embed/rxDY3i_w5Xo" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerpolicy="strict-origin-when-cross-origin" 
+                    allowfullscreen>
+                </iframe>
+            </div>
         </div>
     </section>
     </main>
@@ -173,11 +169,11 @@
                 </a>
                 
                 <a href="https://instagram.com/moorlandviewdarwen" class="social-link ig" target="_blank" rel="noopener noreferrer">
-                    <span class="icon"></span><img src="/images/instagram.svg">
+                    <span class="icon"><img src="/images/instagram.svg"></span>
                 </a>
                 
                 <a href="https://youtube.com/@moorlandviewdarwen" class="social-link yt" target="_blank" rel="noopener noreferrer">
-                    <span class="icon"></span><img src="/images/youtube.svg">
+                    <span class="icon"><img src="/images/youtube.svg"></span>
                 </a>
             </div>
         <p> <a href="https://daniellievesley.tech"> Daniel Lievesley</a> © 2026</p>
