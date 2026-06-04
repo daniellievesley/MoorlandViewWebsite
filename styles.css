@@ -386,3 +386,8 @@ section{
     box-sizing: border-box;
     background-color:#00B6C0;
 }
+
+.news-grid{
+    padding: 0% 1%;
+    font-family: Inter;
+}
