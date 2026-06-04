@@ -2,81 +2,117 @@
 import { Client } from "@notionhq/client";
 import { NotionToMarkdown } from "notion-to-md";
 
-// 1. THE BULLETPROOF FIX: Fetch all paths directly via clean HTTP network request
+/**
+ * REQUIRED for /news/[slug]
+ */
 export async function getStaticPaths() {
   const token = import.meta.env.NOTION_TOKEN;
   const dbId = import.meta.env.NOTION_DATABASE_ID;
 
-  try {
-    const res = await fetch(`https://api.notion.com/v1/databases/${dbId}/query`, {
-      method: 'POST',
+  const res = await fetch(
+    `https://api.notion.com/v1/databases/${dbId}/query`,
+    {
+      method: "POST",
       headers: {
-        'Authorization': `Bearer ${token}`,
-        'Notion-Version': '2022-06-28',
-        'Content-Type': 'application/json'
+        Authorization: `Bearer ${token}`,
+        "Notion-Version": "2022-06-28",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         filter: {
-          property: 'Published',
-          checkbox: { equals: true }
-        }
-      })
-    });
-
-    const data = await res.json();
-
-    if (!data.results) {
-      console.error("Notion API returned no rows:", data);
-      return [];
+          property: "Published",
+          checkbox: { equals: true },
+        },
+      }),
     }
+  );
 
-    // Filter out rows missing a slug, then pass parameters down
-    return data.results
-      .filter((post: any) => post.properties?.Slug?.rich_text?.[0]?.plain_text)
-      .map((post: any) => {
-        const slugText = post.properties.Slug.rich_text[0].plain_text;
-        return {
-          params: { slug: slugText },
-          props: { post }, // Pass down the raw post object data
-        };
-      });
+  const data = await res.json();
 
-  } catch (error) {
-    console.error("❌ Native Fetch failed inside getStaticPaths:", error);
-    return [];
-  }
+  return (data.results || [])
+    .filter(
+      (post) =>
+        post.properties?.Slug?.rich_text?.[0]?.plain_text
+    )
+    .map((post) => ({
+      params: {
+        slug: post.properties.Slug.rich_text[0].plain_text,
+      },
+      props: { post },
+    }));
 }
 
-const { slug } = Astro.params;
-const { post } = Astro.props as any;
+const notion = new Client({
+  auth: import.meta.env.NOTION_TOKEN,
+});
 
-// 2. Extract your Title string securely from the passed down properties
+const n2m = new NotionToMarkdown({
+  notionClient: notion,
+});
+
+/**
+ * IMAGE TRANSFORMER
+ */
+n2m.setCustomTransformer("image", async (block) => {
+  const imageUrl =
+    block.image?.file?.url ||
+    block.image?.external?.url ||
+    "";
+
+  const imageAlt =
+    block.image?.caption?.[0]?.plain_text ||
+    "Notion image";
+
+  if (!imageUrl) return "";
+
+  return `
+    <img 
+      src="${imageUrl}" 
+      alt="${imageAlt}" 
+      class="notion-image"
+      loading="lazy"
+    />
+  `;
+});
+
+const { post } = Astro.props;
+
 const rawDate = post?.properties?.Date?.date?.start || "";
-const postDate = rawDate 
-  ? new Date(rawDate).toLocaleDateString('en-GB', {
-      day: '2-digit',
-      month: '2-digit',
-      year: 'numeric'
+const postDate = rawDate
+  ? new Date(rawDate).toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "2-digit",
+      year: "numeric",
     })
   : "";
-const postTitle = post?.properties?.Name?.title?.[0]?.plain_text || "Newsletter"; 
 
-// 3. Convert the individual page block body below into HTML layouts
-// Note: We use a lightweight manual fallback initialization here so it bypasses constructor crashes
-let articleContentHtml = "<p>No content written for this article yet.</p>";
+const postTitle =
+  post?.properties?.Name?.title?.[0]?.plain_text ||
+  "Newsletter";
+
+let articleContentHtml =
+  "<p>No content written for this article yet.</p>";
 
 if (post) {
   try {
-    // Standard client fallback container
-    const rawClient = new (Client as any)({ auth: import.meta.env.NOTION_TOKEN });
-    const n2m = new NotionToMarkdown({ notionClient: rawClient });
-    
-    const mdblocks = await n2m.pageToMarkdown(post.id);
-    const mdString = n2m.toMarkdownString(mdblocks);
-    articleContentHtml = mdString.parent || "<p>No content written for this article yet.</p>";
+    const mdBlocks = await n2m.pageToMarkdown(post.id);
+    const mdString = n2m.toMarkdownString(mdBlocks);
+
+    let html = mdString.parent || "";
+
+    html = html.replace(
+      /!\[(.*?)\]\((.*?)\)/g,
+      (_, alt, src) => {
+        return `<img src="${src}" alt="${
+          alt || "Notion image"
+        }" class="notion-image" loading="lazy" />`;
+      }
+    );
+
+    articleContentHtml = html;
   } catch (e) {
-    console.error("Error parsing content blocks:", e);
-    articleContentHtml = "<p>Error displaying written content layout stream.</p>";
+    console.error(e);
+    articleContentHtml = "<p>Error loading article.</p>";
   }
 }
 ---

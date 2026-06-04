@@ -72,13 +72,14 @@ header a{
     align-self: flex-start;
 }
 
-button{
+section .btn, #textwithinHero .btn{
     background-color:#2E0152;
     color: white;
     border-radius: 4px;
     font-family: Inter;
     padding: 0.3% 1%;
     font-size: 110%;
+    text-decoration: none;
 }
 
 .fourtiles {
@@ -380,7 +381,7 @@ section{
     min-width: 0;
 }
 
-.sideflex button{
+.sideflex .btn{
     width: 100%;
     display: block;
     box-sizing: border-box;
@@ -458,5 +459,7 @@ section{
     flex: 1;
     width: 20%;
 }
+
+
 
 
