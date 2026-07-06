@@ -1,31 +1,58 @@
+/* ==========================================================================
+   1. Base & Global Styles
+   ========================================================================== */
+html {
+    background-color: white;
+}
+
 body {
     margin: 0;
 }
 
-html{
-    background-color: white;
+body.homepage {
+    background-color: #6B4AA0;
 }
 
+body.newspage,
+body.newspage main {
+    background-color: #6B4AA0;
+    min-height: 100vh;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+section {
+    background-color: #03C5CD;
+    color: #2E0152;
+    font-family: Manrope, sans-serif;
+    padding: 1%;
+}
+
+/* ==========================================================================
+   2. Layout & Layout Containers
+   ========================================================================== */
 header {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 20px;
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     background-color: #2E0152;
     position: sticky;
     top: 0;
     z-index: 1000;
 }
 
-header a{
+header a {
     text-decoration: none;
-    color: #03C5CD
+    color: #03C5CD;
 }
 
 #navMenu {
-    gap: 24px;
     display: flex;
+    gap: 24px;
 }
 
 #logocorner {
@@ -34,92 +61,102 @@ header a{
     height: auto;
 }
 
-.titletext {
-    font-family: Montserrat;
-    color:#2E0152;
-    font-size: 300%;
-    margin-bottom: 0%;
-    font-weight: bold;
+footer {
+    color: #03C5CD;
+    background-color: #6B4AA0;
+    font-family: Montserrat, sans-serif;
+    padding: 1%;
 }
 
-.titlesubtext{
-    font-family: Montserrat;
-    color:#2E0152;
-    font-size: 150%;
+footer a {
+    text-decoration: none;
+    color: #03C5CD;
 }
 
-#cqcBadge {
-    width: 18%;
-    border-radius: 8%;
-}
-
-#mainHero{
+/* ==========================================================================
+   3. Modular Sections (Hero, Sideflex, General Flex)
+   ========================================================================== */
+#mainHero {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 30px;
     background-color: #03C5CD;
-    padding-left: 1%;
-    padding-right: 1%;
-    padding-bottom: 1%;
+    padding: 0 1% 1% 1%;
 }
 
-.heroImg{
-  width: 40%;
-  height: auto;
-  display: block;
-  margin-top: 2%;
-}
-
-#textwithinHero{
+#textwithinHero {
     align-self: flex-start;
 }
 
-section .btn, #textwithinHero .btn{
-    background-color:#2E0152;
-    color: white;
-    border-radius: 4px;
-    font-family: Inter;
-    padding: 0.3% 1%;
-    font-size: 110%;
-    text-decoration: none;
+.heroImg {
+    width: 40%;
+    height: auto;
+    display: block;
+    margin-top: 2%;
 }
 
-.fourtiles {
-    padding: 1%;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-}
-
-.info-card{
-    background-color: #2E0152;
-    border: 1px solid #03C5CD;
-    border-radius: 12px;
-    padding: 3%;
-    color: #03C5CD;
-    font-family: Manrope;
-   
-}
-
-.info-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 12px 24px rgba(59, 13, 83, 0.06);
-  border-color: 2% rgb(176, 227, 99);
-}
-
-.plumsct{
+.sideflex {
     display: flex;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    align-items: stretch;
+    gap: 16px;
     background-color: #2E0152;
-    color: white;
-    padding: 1% 1%;
-    font-family: Manrope;
-    gap: 2%;
-    align-items: flex-start;
+    padding: 1%;
 }
 
+.sideflex > div,
+.twoflex > div,
+.careersct > div,
+.videosct > div,
 .plumsct > div {
-    flex: 0 0 80%;
+    flex: 1 1 0;
+    min-width: 0;
+}
+
+.twoflex {
+    display: flex;
+    align-items: stretch;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 1%;
+    font-family: Inter, sans-serif;
+    background-color: #03C5CD;
+    color: #2E0152;
+}
+
+.twoflex h1 {
+    font-family: Montserrat, sans-serif;
+}
+
+.twoflex-image {
+    flex: 0 0 28%;
+}
+
+.twoflex-image .sideFlex2Img {
+    margin-left: auto;
+}
+
+.sideFlex2Img {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+    margin: 0;
+    padding-right: 0;
+}
+
+.plumsct {
+    display: flex;
+    align-items: flex-start;
+    gap: 2%;
+    padding: 1%;
+    background-color: #2E0152;
+    color: white;
+    font-family: Manrope, sans-serif;
 }
 
 .plumsct > img {
@@ -131,294 +168,170 @@ section .btn, #textwithinHero .btn{
     padding-right: 2%;
 }
 
-.activities-list{
+.careersct {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 1%;
+    font-family: Manrope, sans-serif;
+}
+
+.careersct .sideFlex2Img {
+    flex: 0 0 20%;
+    max-width: 40%;
+    width: 100%;
+    margin-left: auto;
+    padding-right: 4%;
+}
+
+.videosct {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+    padding: 1%;
+    font-family: Manrope, sans-serif;
+    background-color: rgb(168, 216, 218);
+}
+
+.videosct iframe {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+}
+
+#vidsbycarousel {
+    justify-content: space-between;
+}
+
+#vidsbycarousel iframe {
+    align-items: flex-end;
+}
+
+/* Parent Component Alternates (:has) */
+section:has(> #abouttiles), 
+section:has(> .purplebackground), 
+.twoflex:has(> .purplebackground) {
+    background-color: #2E0152;
+    color: #03C5CD;
+}
+
+section:has(> #abouttiles) .info-card {
+    background-color: #03C5CD;
+    color: #2E0152;
+}
+
+/* ==========================================================================
+   4. Typography & Headings
+   ========================================================================== */
+.titletext {
+    font-family: Montserrat, sans-serif;
+    color: #2E0152;
+    font-size: 300%;
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.titlesubtext {
+    font-family: Montserrat, sans-serif;
+    color: #2E0152;
+    font-size: 150%;
+}
+
+.pageBanner {
+    font-family: Montserrat, sans-serif;
+    background: #2E0152;
+    color: #03C5CD;
+    padding-left: 1%;
+    padding-bottom: 1%;
+}
+
+.pageBanner h1 {
+    margin: 0;
+}
+
+/* ==========================================================================
+   5. Components & UI Elements (Cards, Buttons, Lists, Grid Layouts)
+   ========================================================================== */
+section .btn, 
+#textwithinHero .btn {
+    background-color: #2E0152;
+    color: white;
+    border-radius: 4px;
+    font-family: Inter, sans-serif;
+    padding: 0.3% 1%;
+    font-size: 110%;
+    text-decoration: none;
+}
+
+.sideflex .btn {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: #00B6C0;
+}
+
+#cqcBadge {
+    width: 18%;
+    border-radius: 8%;
+}
+
+.fourtiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    padding: 1%;
+}
+
+.info-card {
+    background-color: #2E0152;
+    border: 1px solid #03C5CD;
+    border-radius: 12px;
+    padding: 3%;
+    color: #03C5CD;
+    font-family: Manrope, sans-serif;
+}
+
+.info-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 24px rgba(59, 13, 83, 0.06);
+    border: 2px solid rgb(176, 227, 99); /* Fixed invalid 2% syntax */
+}
+
+.card-icon {
+    font-size: 200%;
+}
+
+.activities-list {
     list-style: none;
     padding: 0;
     margin: 24px 0 0 0;
 }
 
-.activities-list li{
+.activities-list li {
     font-size: 125%;
 }
 
-.careersct{
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 1% 1%;
-    font-family: Manrope;
-}
-
-.careersct > div {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-.careersct .sideFlex2Img {
-    padding-right: 4%;
-    flex: 0 0 20%;
-    max-width: 40%;
-    width: 100%;
-    margin-left: auto;
-}
-
-.videosct{
-    display: flex;
-    padding: 1% 1%;
-    font-family: Manrope;
-    gap: 24px;
-    align-items: flex-start;
-    background-color: rgb(168, 216, 218);
-}
-
-.videosct > div {
-    flex: 1;
-    min-width: 0;
-}
-
-.videosct iframe {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    height: auto;
-    display: block;
-}
-
-footer {
-    color: #03C5CD;
-    background-color:#6B4AA0;
-    font-family: Montserrat;
-    padding: 1% 1%;
-}
-
-footer a{
-    text-decoration: none;
-    color:#03C5CD;
-}
-
-a:visited{
-    text-decoration: none;
-}
-
-.card-icon {
-  font-size: 200%;
-}
-
-.plumsct > div {
-  flex: 1 1 0;
-  min-width: 0;
-}
-
-.sideFlex2Img {
-  padding-right: 0;
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  display: block;
-  margin: 0;
-}
-
-
-.twoflex{
-    display: flex;
-    align-items: flex-start;
-    gap: 24px;
-    padding: 1% 1%;
-    font-family: Inter;
-    justify-content: space-between;
-    background-color:#03C5CD;
-    color:#2E0152;
-}
-
-.twoflex > div {
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-.twoflex-image {
-    flex: 0 0 28%;
-}
-
-.twoflex-image .sideFlex2Img {
-    margin-left: auto;
-}
-
-
-.twoflex h1{
-    font-family: Montserrat;
-}
-
-section{
-    background-color: #03C5CD;
-    color:#2E0152;
-    font-family: Manrope;
-    padding: 1% 1%;
-}
-
-.pageBanner{
-    font-family: Montserrat;
-    background: #2E0152;
-    color:#03C5CD;
-    padding-left: 1%;
-    padding-bottom: 1%;
-}
-
-.pageBanner h1{
-    margin: 0;
-}
-
-.feedback-card {
-  background: #ffffff;
-  border-radius: 12px;
-  padding: 32px;
-  margin: 0; /* Reset default browser blockquote margins */
-  box-shadow: 0 4px 6px rgba(59, 13, 83, 0.02); /* Very soft plum shadow tint */
-  
-  /* Creates a distinct, stylish accent border on the left using your brand teal */
-  border-left: 4px solid #00B6C0; 
-  
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-bottom: 1%;
-}
-
-.quote-mark {
-  font-family: 'Georgia', serif;
-  font-size: 60px;
-  color: rgba(0, 182, 192, 0.15); /* Light translucent teal */
-  line-height: 1;
-  position: absolute;
-  top: 10px;
-  left: 20px;
-}
-
-.quote-text {
-  font-family: 'Inter', sans-serif;
-  font-style: italic; /* Italics instantly signal spoken feedback */
-  font-size: 16px;
-  line-height: 1.6;
-  color: #4A5568;
-  margin-bottom: 20px;
-  z-index: 1; /* Keeps text layered cleanly above background quote mark */
-}
-
-.quote-author {
-  font-family: 'Inter', sans-serif;
-  font-style: normal; /* Turn off italicizing for the name signature */
-  font-weight: 600;
-  font-size: 14px;
-  color: #3B0D53; /* Brand Plum */
-  margin-top: auto; /* Push the signature cleanly to the bottom of the card */
-}
-
-.carousel{
-    width: 60%;
-    top: 50%;
-    left: 50%;
-    overflow: hidden;
-    border: 4px solid #2E0152;
-    border-radius: 8px;
-    box-shadow: 10px 25px 30px rgba(30,30,200, 0.3);
-}
-
-.carousel-wrapper{
-    width: 100%;
-    display: flex;
-    animation: slide 16s infinite;
-}
-
-@keyframes slide{
-    0%{
-        transform: translateX(0);
-    }
-    25%{
-        transform: translateX(0);
-    }
-    30%{
-        transform: translateX(-100%);
-    }
-    50%{
-        transform: translateX(-100%);
-    }
-    55%{
-        transform: translateX(-200%);
-    }
-    75%{
-        transform: translateX(-200%);
-    }
-    80%{
-        transform: translateX(-300%);
-    }
-    100%{
-        transform: translateX(-300%);
-    }
-}
-.carousel-wrapper img{
-    width: 100%;
-}
-
-#vidsbycarousel{
-    justify-content: space-between;
-}
-
-#vidsbycarousel iframe{
-    align-items: flex-end;
-}
-
-.sideflex{
-    display: flex;
-    width: 100%;
-    max-width: 100%;
-    box-sizing: border-box;
-    align-items: stretch;
-    gap: 16px;
-    background-color: #2E0152;
-    padding: 1% 1%;
-}
-
-
-.sideflex > div{
-    flex: 1 1 0;
-    min-width: 0;
-}
-
-.sideflex .btn{
-    width: 100%;
-    display: block;
-    box-sizing: border-box;
-    background-color:#00B6C0;
-}
-
-.news-grid{
-    padding: 0% 1%;
-    font-family: Inter;
-    color:#2E0152;
+.news-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    margin: 2% 0%;
     gap: 1%;
+    margin: 2% 0;
+    padding: 0 1%;
+    font-family: Inter, sans-serif;
+    color: #2E0152;
 }
 
-body.newspage{
-    background-color: #6B4AA0;
-    min-height: 100vh;
-}
-
-body.newspage main{
-    background-color: #6B4AA0;
-}
-
-.news-card{
-    background-color:#03C5CD;
-    padding: 2%;
+.news-card {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background-color: #03C5CD;
+    padding: 2%;
     border: 1px solid #f1f5f9;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05); /* Soft, elegant shadow */;
     border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .news-card:hover {
@@ -427,12 +340,12 @@ body.newspage main{
 }
 
 .read-more-btn {
-    font-weight: 600;
-    color: white; /* Cyan color matching your footer bar */
-    text-decoration: none;
     display: inline-block;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
     margin-top: auto;
-    transition: color 0.2s ease;
+    transition: color 0.2s ease, font-size 0.2s ease;
 }
 
 .read-more-btn:hover {
@@ -443,74 +356,155 @@ body.newspage main{
 .article-container {
     padding: 2% 1%;
     background-color: #03C5CD;
-    color:#2E0152;
-    font-family: Montserrat;
+    color: #2E0152;
+    font-family: Montserrat, sans-serif;
 }
 
-.notion-content{
+.notion-content {
     background-color: white;
     border-radius: 4px;
     font-size: 115%;
-    font-family: Inter;
-    padding-left: 0.2%;
-    padding-top: 0.5%;
-    padding-bottom: 0.5%;
-    padding-right: 0.2%;
-
+    font-family: Inter, sans-serif;
+    padding: 0.5% 0.2%;
 }
 
-.social-icons-grid{
+.social-icons-grid {
     display: flex;
     width: 10%;
-    gap: 10%;
     height: 10%;
+    gap: 10%;
 }
 
-.social-link{
+.social-link {
     flex: 1;
     width: 20%;
 }
 
-section:has(> #abouttiles), section:has(> .purplebackground), .twoflex:has(> .purplebackground){
-    background-color: #2E0152;
-    color:#03C5CD;
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
 }
 
-section:has(> #abouttiles) .info-card{
-    background-color:#03C5CD;
-    color:#2E0152;
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
-body.homepage{
-    background-color: #6B4AA0;
+#diningroom{
+    width: 80%;
+}
+
+.vidstack {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.video-column {
+    flex: 0 0 40%;
+}
+
+.video-column iframe {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
 }
 
 
+/* ==========================================================================
+   6. Feedback Cards & Carousel Components
+   ========================================================================== */
+.feedback-card {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background: #ffffff;
+    border-radius: 12px;
+    border-left: 4px solid #00B6C0;
+    padding: 32px;
+    margin: 0 0 1% 0;
+    box-shadow: 0 4px 6px rgba(59, 13, 83, 0.02);
+}
 
+.quote-mark {
+    font-family: 'Georgia', serif;
+    font-size: 60px;
+    color: rgba(0, 182, 192, 0.15);
+    line-height: 1;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
 
+.quote-text {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #4A5568;
+    margin-bottom: 20px;
+    z-index: 1;
+}
 
+.quote-author {
+    font-family: 'Inter', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    color: #3B0D53;
+    margin-top: auto;
+}
 
+.carousel {
+    width: 60%;
+    top: 50%;
+    left: 50%;
+    overflow: hidden;
+    border: 4px solid #2E0152;
+    border-radius: 8px;
+    box-shadow: 10px 25px 30px rgba(30, 30, 200, 0.3);
+}
+
+.carousel-wrapper {
+    display: flex;
+    animation: slide 16s infinite;
+}
+
+.carousel-wrapper img {
+    width: 100%;
+}
+
+@keyframes slide {
+    0%, 25%    { transform: translateX(0); }
+    30%, 50%   { transform: translateX(-100%); }
+    55%, 75%   { transform: translateX(-200%); }
+    80%, 100%  { transform: translateX(-300%); }
+}
+
+/* ==========================================================================
+   7. Media Queries (Responsive Adjustments)
+   ========================================================================== */
 @media (max-width: 768px) {
-
-    .titletext, .titlesubtext{
+    .titletext, 
+    .titlesubtext,
+    section h2, 
+    section p, 
+    section li,
+    #cqcBadge {
         padding-left: 1%;
     }
 
-    section h2, section p, section li{
-        padding-left: 1%;
-    }
-
-    #cqcBadge{
-        padding-left: 1%;
-    }
     header {
         flex-direction: column;
         align-items: flex-start;
         gap: 12px;
         padding: 12px 16px;
-        position: sticky;
-    top: 0;
-    z-index: 1000;
     }
 
     #navMenu {
@@ -543,26 +537,48 @@ body.homepage{
         max-width: 100%;
     }
 
-    #vidstack {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
+    .twoflex {
+    display: flex;
+    align-items: stretch;
+    gap: 24px;
+    padding: 2% 1%;
+}
+
+.twoflex-copy {
+    flex: 8;
+    min-width: 0;
+}
+
+.vidstack {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    gap: 16px;
+}
+
+.video-column {
+    flex: 1 1 auto;
+    width: 100%;
+}
+
+.vidstack iframe {
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+}
 
     #vidstack iframe,
     .videosct iframe,
     .carousel {
         width: 100%;
         max-width: 100%;
-        overflow: hidden;
         box-sizing: border-box;
+        overflow: hidden;
     }
 
-    .carousel{
+    .carousel {
         padding-right: 10%;
     }
-
-
 
     .news-grid {
         grid-template-columns: 1fr;
@@ -574,7 +590,6 @@ body.homepage{
     .article-container,
     section,
     .pageBanner,
-    .news-grid,
     footer {
         padding-left: 16px;
         padding-right: 16px;
@@ -594,19 +609,13 @@ body.homepage{
     }
 
     .icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;         /* Adjust this to change button size */
-    height: 40px;        /* Adjust this to change button size */
-    overflow: hidden;
-}
-
-.icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Keeps the SVG logo ratio perfect without distortion */
-}
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        overflow: hidden;
+    }
 
     .notion-content img,
     .notion-image {
