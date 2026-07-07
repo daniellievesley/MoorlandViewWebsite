@@ -400,7 +400,7 @@ section .btn,
 .notion-content img,
 .notion-image {
     display: block;
-    width: 100%;
+    width: 40%;
     height: auto;
     margin: 1rem 0;
 }
@@ -410,7 +410,7 @@ section .btn,
 .notion-content embed,
 .notion-content object {
     display: block;
-    max-width: 100%;
+    max-width: 40%;
 }
 
 .social-icons-grid {
