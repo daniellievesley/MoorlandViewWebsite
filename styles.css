@@ -13,10 +13,12 @@ body.homepage {
     background-color: #6B4AA0;
 }
 
-body.newspage,
+body.newspage,{
+    min-height: 100vh;
+}
+
 body.newspage main {
     background-color: #6B4AA0;
-    min-height: 100vh;
 }
 
 a:visited {
@@ -371,24 +373,62 @@ section .btn,
     font-family: Montserrat, sans-serif;
 }
 
+.article-container h1,
+.article-date,
+.notion-content {
+    width: min(100%, 920px);
+    max-width: 920px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .notion-content {
     background-color: white;
     border-radius: 4px;
     font-size: 115%;
     font-family: Inter, sans-serif;
-    padding: 0.5% 0.2%;
+    padding: 2rem;
+    box-sizing: border-box;
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+}
+
+.notion-content > * {
+    max-width: 100%;
+}
+
+.notion-content img,
+.notion-image {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 1rem 0;
+}
+
+.notion-content iframe,
+.notion-content video,
+.notion-content embed,
+.notion-content object {
+    display: block;
+    max-width: 100%;
 }
 
 .social-icons-grid {
     display: flex;
-    width: 10%;
-    height: 10%;
-    gap: 10%;
+    width: fit-content;
+    max-width: 100%;
+    height: auto;
+    gap: 16px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
 .social-link {
-    flex: 1;
-    width: 20%;
+    flex: 0 0 auto;
+    width: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .icon {
@@ -607,7 +647,8 @@ section .btn,
     }
 
     .social-icons-grid {
-        width: 100%;
+        width: fit-content;
+        max-width: 100%;
         gap: 16px;
         height: auto;
         flex-wrap: wrap;
@@ -626,6 +667,17 @@ section .btn,
         width: 40px;
         height: 40px;
         overflow: hidden;
+    }
+
+    .article-container h1,
+    .article-date,
+    .notion-content {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .notion-content {
+        padding: 1rem;
     }
 
     .notion-content img,
