@@ -15,44 +15,41 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 22
-          cache: npm
-          cache-dependency-path: moorland-news/package-lock.json
+          node-version: 20
 
       - name: Install dependencies
+        working-directory: moorland-news
         run: npm install
+
+      - name: Build news site
         working-directory: moorland-news
-
-      - name: Check Astro output
-        run: |
-          ls -la moorland-news/dist
-          find moorland-news/dist -maxdepth 2 -type d
-
-      - name: Build Astro site
         run: npm run build
-        working-directory: moorland-news
+        env:
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
 
-      - name: Copy news output
-        run: |
-          mkdir -p news
-          rsync -a --delete moorland-news/dist/news/ news/
-
-      - name: Commit and push changes
-        shell: bash
+      - name: Sync built news files
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add news news.html
-          if git diff --cached --quiet; then
-            echo "No news changes to commit."
-            exit 0
+
+          mkdir -p news
+
+          rsync -a --delete moorland-news/dist/news/ news/
+
+          if [ -f moorland-news/dist/news.html ]; then
+            cp moorland-news/dist/news.html news.html
           fi
-          git commit -m "Update news from Notion"
+
+      - name: Commit updated news
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add news news.html
+
+          git diff --cached --quiet || git commit -m "Update news from Notion"
+
           git push
