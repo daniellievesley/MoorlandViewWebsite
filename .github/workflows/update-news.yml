@@ -26,17 +26,17 @@ jobs:
           cache-dependency-path: moorland-news/package-lock.json
 
       - name: Install dependencies
-  run: npm install
-  working-directory: moorland-news
+        run: npm install
+        working-directory: moorland-news
 
-- name: Build Astro site
-  run: npm run build
-  working-directory: moorland-news
+      - name: Build Astro site
+        run: npm run build
+        working-directory: moorland-news
 
-- name: Copy news output
-  run: |
-    mkdir -p news
-    rsync -a --delete moorland-news/dist/news/ news/
+      - name: Copy news output
+        run: |
+          mkdir -p news
+          rsync -a --delete moorland-news/dist/news/ news/
 
       - name: Commit and push changes
         shell: bash
