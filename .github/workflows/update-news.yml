@@ -25,29 +25,18 @@ jobs:
           cache: npm
           cache-dependency-path: moorland-news/package-lock.json
 
-      - name: Install Astro dependencies
-        working-directory: moorland-news
-        run: npm ci
+      - name: Install dependencies
+  run: npm install
+  working-directory: moorland-news
 
-      - name: Build news pages from Notion
-        working-directory: moorland-news
-        env:
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        run: npm run build
+- name: Build Astro site
+  run: npm run build
+  working-directory: moorland-news
 
-      - name: Sync generated news pages into site
-        shell: bash
-        run: |
-          set -euo pipefail
-          mkdir -p news
-          rsync -a --delete moorland-news/dist/news/ news/
-
-          if [ -f moorland-news/dist/news.html ]; then
-            cp moorland-news/dist/news.html news.html
-          elif [ -f moorland-news/dist/news/index.html ]; then
-            cp moorland-news/dist/news/index.html news.html
-          fi
+- name: Copy news output
+  run: |
+    mkdir -p news
+    rsync -a --delete moorland-news/dist/news/ news/
 
       - name: Commit and push changes
         shell: bash
