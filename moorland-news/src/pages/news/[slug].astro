@@ -1,5 +1,6 @@
 ---
 import { Client } from "@notionhq/client";
+import { marked } from "marked";
 import { NotionToMarkdown } from "notion-to-md";
 
 /**
@@ -50,6 +51,49 @@ const n2m = new NotionToMarkdown({
   notionClient: notion,
 });
 
+marked.setOptions({
+  breaks: true,
+});
+
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, (character) => {
+    switch (character) {
+      case "&":
+        return "&amp;";
+      case "<":
+        return "&lt;";
+      case ">":
+        return "&gt;";
+      case '"':
+        return "&quot;";
+      case "'":
+        return "&#39;";
+      default:
+        return character;
+    }
+  });
+}
+
+function shiftHeadingLevels(markdown) {
+  return markdown.replace(/^(#{1,6})\s+(.*)$/gm, (_, hashes, headingText) => {
+    const nextLevel = Math.min(hashes.length + 1, 6);
+    return "#".repeat(nextLevel) + " " + headingText;
+  });
+}
+
+async function inlineImageAsDataUri(imageUrl) {
+  const response = await fetch(imageUrl);
+
+  if (!response.ok) {
+    throw new Error("Failed to fetch image: " + response.status);
+  }
+
+  const contentType = response.headers.get("content-type") || "image/jpeg";
+  const imageBuffer = Buffer.from(await response.arrayBuffer());
+
+  return "data:" + contentType + ";base64," + imageBuffer.toString("base64");
+}
+
 /**
  * IMAGE TRANSFORMER
  */
@@ -65,14 +109,12 @@ n2m.setCustomTransformer("image", async (block) => {
 
   if (!imageUrl) return "";
 
-  return `
-    <img 
-      src="${imageUrl}" 
-      alt="${imageAlt}" 
-      class="notion-image"
-      loading="lazy"
-    />
-  `;
+  const imageSource = await inlineImageAsDataUri(imageUrl).catch((error) => {
+    console.error(error);
+    return imageUrl;
+  });
+
+  return '<img src="' + imageSource + '" alt="' + escapeHtml(imageAlt) + '" class="notion-image" loading="lazy" />';
 });
 
 const { post } = Astro.props;
@@ -98,23 +140,14 @@ if (post) {
     const mdBlocks = await n2m.pageToMarkdown(post.id);
     const mdString = n2m.toMarkdownString(mdBlocks);
 
-    let html = mdString.parent || "";
-
-    html = html.replace(
-      /!\[(.*?)\]\((.*?)\)/g,
-      (_, alt, src) => {
-        return `<img src="${src}" alt="${
-          alt || "Notion image"
-        }" class="notion-image" loading="lazy" />`;
-      }
-    );
-
-    articleContentHtml = html;
+    const markdown = shiftHeadingLevels(mdString.parent || "");
+    articleContentHtml = await marked.parse(markdown);
   } catch (e) {
     console.error(e);
     articleContentHtml = "<p>Error loading article.</p>";
   }
 }
+
 ---
 
 <!DOCTYPE html>
