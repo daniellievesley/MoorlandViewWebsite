@@ -19,17 +19,18 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: 22.12.0
 
       - name: Install dependencies
         working-directory: moorland-news
-        run: npm install
+        run: npm ci
 
       - name: Build news site
         working-directory: moorland-news
         run: npm run build
         env:
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
 
       - name: Sync built news files
         run: |
