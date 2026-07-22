@@ -38,10 +38,12 @@ jobs:
 
           mkdir -p news
 
-          rsync -a --delete moorland-news/dist/news/ news/
-
           if [ -f moorland-news/dist/news.html ]; then
             cp moorland-news/dist/news.html news.html
+          fi
+
+          if [ -d moorland-news/dist/news ]; then
+            rsync -a --delete moorland-news/dist/news/ news/
           fi
 
       - name: Commit updated news
