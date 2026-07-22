@@ -29,6 +29,11 @@ jobs:
         run: npm install
         working-directory: moorland-news
 
+      - name: Check Astro output
+        run: |
+          ls -la moorland-news/dist
+          find moorland-news/dist -maxdepth 2 -type d
+
       - name: Build Astro site
         run: npm run build
         working-directory: moorland-news
