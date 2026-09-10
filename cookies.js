@@ -11,9 +11,7 @@ document.getElementById("accept-cookies").onclick = function () {
     loadAnalytics();
 };
 
-document.getElementById("reject-cookies").addEventListener("click", reject());
-    
-function reject(){
+document.getElementById("reject-cookies").onclick = function() {
     localStorage.setItem("cookieConsent", "rejected");
     banner.style.display = "none";
 };

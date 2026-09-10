@@ -468,6 +468,18 @@ section .btn,
 }
 
 
+#cookie-banner{
+    display: none;
+    position: fixed;
+    bottom: 0;
+    padding-bottom: 1%;
+    background: #1f2937;
+    color: #fff;
+    font-family: Montserrat;
+    z-index: 9999;
+}
+
+
 /* ==========================================================================
    6. Feedback Cards & Carousel Components
    ========================================================================== */
