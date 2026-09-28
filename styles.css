@@ -366,6 +366,26 @@ section .btn,
     font-size: 120%;
 }
 
+#temp-popup{
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: rgba(255, 255, 255, 0.95);
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#temp-popup h2, #temp-popup p, #temp-popup button{
+    align-items: center;
+    justify-content: center;
+    font-family: Inter;
+    text-align: center;
+}
+
 .article-container {
     padding: 2% 1%;
     background-color: #03C5CD;
